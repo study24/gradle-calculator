@@ -17,6 +17,9 @@ stages
               sh './gradlew jar'
               }
   }
+  
+  stage ('Call Dockerfile')
+  { steps {  sh 'docker build -t pkw0301/gradle-ex:v1 .' } }
 
 
 }
