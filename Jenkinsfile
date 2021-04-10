@@ -10,9 +10,12 @@ stages
 
  {   steps {  sh './gradlew clean build'
               sh './gradlew jar'
-              sh './gradlew test'
                 }}
 
+ 
+ stage ('code test')
+
+ {   steps { sh './gradlew test'  }}
  
 }
 
