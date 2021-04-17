@@ -16,7 +16,15 @@ stages
  stage ('code test')
 
  {   steps { sh './gradlew test'  }}
- 
-}
+  
+  stage('deploy to dev')
+    
+   { steps {
+       sshagent(['tomcat']) {
+       sh 'scp -o StrictHostKeyChecking=no target/*.jar ec2-user@172.31.44.215:/var/lib/tomcat/webapps'
+    }
+            }
+         }
 
+}
 }
